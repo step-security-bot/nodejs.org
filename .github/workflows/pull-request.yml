@@ -28,6 +28,11 @@ jobs:
       turbo_args: ${{ steps.turborepo_arguments.outputs.turbo_args }}
 
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@8ca2b8b2ece13480cda6dacd3511b49857a23c09 # v2.5.1
+        with:
+          egress-policy: audit
+
       - name: Calculate Commits to Checkout
         id: calculate_current_commits
         # This calculates the amount of commits we should fetch during our shallow clone
@@ -66,6 +71,11 @@ jobs:
     needs: [base]
 
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@8ca2b8b2ece13480cda6dacd3511b49857a23c09 # v2.5.1
+        with:
+          egress-policy: audit
+
       - name: Git Checkout
         uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9
         with:
@@ -123,6 +133,11 @@ jobs:
     needs: [base]
 
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@8ca2b8b2ece13480cda6dacd3511b49857a23c09 # v2.5.1
+        with:
+          egress-policy: audit
+
       - name: Git Checkout
         uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9
         with:
